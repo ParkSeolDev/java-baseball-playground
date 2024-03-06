@@ -24,4 +24,11 @@ public class StringTest {
         String[] strArr = "1".split(",");
         assertThat(strArr).contains("1");
     }
+
+    @Test
+    void remove_parentheses() {
+        String givenStr = "(1,2)";
+        String extractedStr = givenStr.substring(1, givenStr.length()-1);
+        assertThat(extractedStr).isEqualTo("1,2");
+    }
 }
