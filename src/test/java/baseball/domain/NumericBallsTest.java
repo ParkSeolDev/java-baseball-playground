@@ -27,4 +27,11 @@ public class NumericBallsTest {
 			new NumericBalls(numbers);
 		});
 	}
+
+	@Test
+	void match_test() {
+		List<Integer> numbers = List.of(1,2,3);
+		List<Integer> scoreList = (new NumericBalls(numbers)).match(new NumericBalls(numbers));
+		assertEquals(scoreList.get(0), 3);
+	}
 }

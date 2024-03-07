@@ -12,6 +12,7 @@ public class NumericBalls implements Iterable {
 		for (Integer number : numbers) {
 			newBalls.add(new NumericBall(number));
 		}
+		this.numericBalls = newBalls;
 	}
 
 	private void validate(List<Integer> numbers) {
