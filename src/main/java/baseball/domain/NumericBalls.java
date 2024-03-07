@@ -1,10 +1,16 @@
 package baseball.domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class NumericBalls implements Iterable {
 	private List<NumericBall> numericBalls;
+
+	public NumericBalls() {
+		numericBalls = new ArrayList<>();
+	}
 
 	public NumericBalls(List<Integer> numbers) {
 		validate(numbers);
@@ -31,15 +37,22 @@ public class NumericBalls implements Iterable {
 	}
 
 	private Integer matchBall(NumericBalls otherBalls) {
+		Map<Integer, Integer> map = new HashMap<>();
+		for (NumericBall num : numericBalls) {
+			map.put(num.numericBall(), 0);
+		}
+
 		int ballCnt = 0;
+
 		Iterator otherIterator = otherBalls.iterator();
-		for (NumericBall myBall : numericBalls) {
-			while(otherIterator.hasNext()) {
-				NumericBall otherBall = otherIterator.next();
-				if (myBall.equals(otherBall)) {
-					ballCnt++;
-				}
+		while(otherIterator.hasNext()) {
+			NumericBall otherBall = otherIterator.next();
+			if (map.containsKey(otherBall.numericBall())) {
+				map.put(otherBall.numericBall(), map.get(otherBall.numericBall()) + 1);
 			}
+		}
+		for (Integer value : map.values()) {
+			ballCnt += value;
 		}
 		return ballCnt;
 	}

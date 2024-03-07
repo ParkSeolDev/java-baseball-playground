@@ -15,6 +15,10 @@ public class NumericBall {
 		}
 	}
 
+	public Integer numericBall() {
+		return numericBall;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
